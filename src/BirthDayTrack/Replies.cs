@@ -3,6 +3,7 @@ using Telegram.Bot.Types.ReplyMarkups;
 using Telegram.Bot;
 using System.Text.RegularExpressions;
 using AccessConfiguration;
+using Telegram.Bot.Types.Enums;
 
 namespace BirthDayTrack;
 
@@ -203,7 +204,7 @@ public static class Replies
 
         await DataBaseQueries.AddInvitation(invitersUsername, invitationId, roomName);
         
-        await TelegramAttributes.BotClient.SendTextMessageAsync(message.Chat.Id, invitationText, cancellationToken: TelegramAttributes.Token);
+        await TelegramAttributes.BotClient.SendTextMessageAsync(message.Chat.Id, invitationText, parseMode: ParseMode.MarkdownV2, cancellationToken: TelegramAttributes.Token);
         await TelegramAttributes.BotClient.SendTextMessageAsync(message.Chat.Id, 
             "Перешли сообщение выше своему другу\ud83d\ude07\n P.S. работает для одного человека, для нового друга запроси новое приглашение", cancellationToken: TelegramAttributes.Token);
     }

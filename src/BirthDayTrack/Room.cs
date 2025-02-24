@@ -24,6 +24,6 @@ internal class Room
 
     internal string GetInvitationMessage(int id)
     {
-        return $"Привет-привет! \ud83d\ude0f\n Это бот для напоминаний о дршках твоих друзей: @BirthDayTrackBot.\n Ваш код приглашения: {id}";
+        return $"Привет\\-привет\\! \ud83d\ude0f\n Это бот для напоминаний о дршках твоих друзей: @BirthDayTrackBot\\.\n Ваш код приглашения: `{id}`";
     }
 }
