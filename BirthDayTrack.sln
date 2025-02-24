@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35303.130
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirthDayTrack", "src\BirthDayTrack\BirthDayTrack.csproj", "{F9472630-32FE-49FD-988B-62012A2B68BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessConfiguration", "src\AccessConfiguration\AccessConfiguration.csproj", "{10206A1A-4AE5-41DF-9E12-8F07355C39ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F9472630-32FE-49FD-988B-62012A2B68BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9472630-32FE-49FD-988B-62012A2B68BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9472630-32FE-49FD-988B-62012A2B68BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9472630-32FE-49FD-988B-62012A2B68BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10206A1A-4AE5-41DF-9E12-8F07355C39ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10206A1A-4AE5-41DF-9E12-8F07355C39ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10206A1A-4AE5-41DF-9E12-8F07355C39ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10206A1A-4AE5-41DF-9E12-8F07355C39ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C2FAB434-0011-46CD-B4A4-7B21741D6AB7}
+	EndGlobalSection
+EndGlobal
