@@ -1,4 +1,7 @@
 config/appsettings.json
+src/config/appsettings.json
+src/Test.txt
+test.txt
 
 bin/
 obj/
