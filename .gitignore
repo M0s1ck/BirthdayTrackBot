@@ -24,4 +24,4 @@ packages/
 .nuget/
 
 .DS_Store
-Thumbs.db
+Thumbs.db"src/config/appsettings.json" 
