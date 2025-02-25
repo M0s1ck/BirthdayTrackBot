@@ -13,9 +13,6 @@ internal static class Program
         MyBotUser mbu = new();
         Console.WriteLine(mbu.hey);
         
-        //Изменение рабочей директории
-        Parser.SetCurrentDirectoryToConfig();
-        
         //Парсинг данных с токеном и данных для подключения к бд. 
         AppSettings appSettings = Parser.GetAppSettings() ?? new AppSettings();
         

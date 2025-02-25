@@ -8,28 +8,33 @@ namespace BirthDayTrack;
 internal static class Parser
 {
     //Sets Solution's current directory to config/
-    internal static void SetCurrentDirectoryToConfig()
+    internal static string GetConfigSettingsPath()
     {
+        string baseDir = Directory.GetCurrentDirectory();
         Console.WriteLine(Directory.GetCurrentDirectory());
         
-        string defaultPath = Directory.GetCurrentDirectory();
-        string[] defaultPathArr = defaultPath.Split(Path.DirectorySeparatorChar);
-        string projectPath = string.Join(Path.DirectorySeparatorChar, defaultPathArr[..^5]);
+        string appsettingsRelative = "config" + Path.DirectorySeparatorChar + "appsettings.json";
 
-        string configPath = Path.Combine(projectPath, "config");
+        string appsettingsPath = baseDir + Path.DirectorySeparatorChar + appsettingsRelative;
+        Console.WriteLine(appsettingsPath);
         
-        Directory.SetCurrentDirectory(configPath);
-        Console.WriteLine(Directory.GetCurrentDirectory());
-        
+        if (!Path.Exists(appsettingsPath))
+        {
+            appsettingsPath = Directory.GetParent(baseDir)!.Parent!.Parent!.Parent!.FullName +
+                              Path.DirectorySeparatorChar + appsettingsRelative;
+            Console.WriteLine(appsettingsPath);
+        }
+
+        return appsettingsPath;
     }
 
     internal static AppSettings? GetAppSettings()
     {
-        string path = Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json");
-
-        if (File.Exists(path))
+        string settPath = GetConfigSettingsPath();
+        
+        if (File.Exists(settPath))
         {
-            string jsonContent = File.ReadAllText(path);
+            string jsonContent = File.ReadAllText(settPath);
             
             JsonSerializerOptions options = new JsonSerializerOptions
             {

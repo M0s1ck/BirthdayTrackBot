@@ -1,11 +1,14 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-COPY *.csproj
-RUN dotnet restore
+COPY *.sln .
+COPY src/BirthDayTrack/*.csproj src/BirthDayTrack/
+COPY src/AccessConfiguration/*.csproj src/AccessConfiguration/
 
-COPY . .
-RUN dotnet publish -c Release -o
+RUN dotnet restore "BirthDayTrack.sln"
+
+COPY src/. ./src/
+RUN dotnet publish "src/BirthDayTrack/BirthDayTrack.csproj" -c Release -o /app
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
