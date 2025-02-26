@@ -7,9 +7,9 @@ COPY src/AccessConfiguration/*.csproj src/AccessConfiguration/
 
 RUN dotnet restore  
 
-COPY src/ src/  # Изменено
+COPY src/ src/
 
-WORKDIR /src/BirthDayTrack  # Изменено
+WORKDIR /src/BirthDayTrack
 RUN dotnet publish -c Release -o /app  
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
