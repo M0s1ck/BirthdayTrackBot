@@ -1,8 +1,9 @@
 version: '3.8'
 
 services:
-  bot:
+  birthday-bot:
     build: .
+    image: birthday-bot:1.2
     environment:
       DB_SERVER: db
       DB_NAME: ${DB_NAME}
