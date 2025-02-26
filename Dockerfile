@@ -8,7 +8,7 @@ COPY src/AccessConfiguration/*.csproj src/AccessConfiguration/
 RUN dotnet restore "BirthDayTrack.sln"
 
 COPY src/. ./src/
-RUN dotnet publish "src/BirthDayTrack/BirthDayTrack.csproj" -c Release -o /app
+RUN dotnet publish "BirthDayTrack/BirthDayTrack.csproj" -c Release -o /app
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
