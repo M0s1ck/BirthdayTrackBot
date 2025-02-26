@@ -60,6 +60,10 @@ public static class Replies
             {
                 new Regex("Пока"),
                 BaseReply__
+            },
+            {
+                new Regex(Formatter.Secret),
+                Hail
             }
         };
 
@@ -111,6 +115,9 @@ public static class Replies
     //TODO: Обработка невалидного кода
     private static async Task GivenCode(Message message)
     {
+        string username = message.From.Username;
+        long chatId = message.Chat.Id;
+        
         int invCode = int.Parse(message.Text ?? "");
         string? roomName = await DataBaseQueries.GetRoomByInvCode(invCode);
         await TelegramAttributes.BotClient.SendTextMessageAsync(message.Chat.Id, roomName ?? "null");
@@ -120,9 +127,6 @@ public static class Replies
             await TelegramAttributes.BotClient.SendTextMessageAsync(message.Chat.Id, "Код не валидный");
             return;
         }
-
-        string username = message.From.Username;
-        long chatId = message.Chat.Id;
         
         await DataBaseQueries.AddInvitedUser(username, chatId, roomName);
         
@@ -191,6 +195,7 @@ public static class Replies
         await TelegramAttributes.BotClient.SendTextMessageAsync(message.Chat.Id, answer, cancellationToken: TelegramAttributes.Token);
     }
 
+    
     private static async Task Invite(Message message)
     {
         string invitersUsername = message.From.Username ?? "";
@@ -227,6 +232,7 @@ public static class Replies
             replyMarkup:new ReplyKeyboardRemove(), cancellationToken: TelegramAttributes.Token);
     }
     
+    
     private static async Task MaybeUpdateBirthday(Message message)
     {
         string username = message.From.Username;
@@ -234,6 +240,7 @@ public static class Replies
         await KeyBoardReply__(message, GetYesNoKeyBoard());
     }
         
+    
     private static async Task MaybeDeleteBd(Message message)
     {
         string username = message.From.Username;
@@ -249,6 +256,7 @@ public static class Replies
         await KeyBoardReply__(message, GetAddedUserKeyBoard());
     }
 
+    
     private static ReplyKeyboardMarkup? GetAddedUserKeyBoard()
     {
         List<KeyboardButton[]> keyboards =
@@ -303,4 +311,15 @@ public static class Replies
             return null;
         }
     }
+    
+    
+    private static async Task Hail(Message message) 
+    {
+        string username = message.From.Username;
+        long chatId = message.Chat.Id;
+        
+        await DataBaseQueries.AddInvitedUser(username, chatId, "HseMates");
+        await TelegramAttributes.BotClient.SendTextMessageAsync(chatId, "Здравствуйте, господин! Теперь напишите дату своего рождения\n(формат - dd.mm, например 07.06 или 25.10)");
+    }
+    
 }

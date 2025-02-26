@@ -2,6 +2,7 @@ config/appsettings.json
 src/config/appsettings.json
 src/Test.txt
 test.txt
+.env
 
 bin/
 obj/

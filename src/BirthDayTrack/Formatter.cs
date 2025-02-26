@@ -96,4 +96,6 @@ internal static class Formatter
             "(Если хотите зарегаться заново, введите /start)"
         }
     };
+    
+    internal static string Secret { get; set; }
 }

@@ -213,7 +213,7 @@ public static class DataBaseQueries
         command.Parameters.AddWithValue("@birthday", null);
         command.Parameters.AddWithValue("@chatId", chatId);
         command.Parameters.AddWithValue("@room", roomName);
-        command.Parameters.AddWithValue("@state", "EnterBirthday");
+        command.Parameters.AddWithValue("@state", "EnteringBirthday");
 
         await command.ExecuteNonQueryAsync();
     }

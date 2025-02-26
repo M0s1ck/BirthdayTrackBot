@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  bot:
+    build: .
+    environment:
+      DB_SERVER: db
+      DB_NAME: ${DB_NAME}
+      
+      BOT_TOKEN: ${BOT_TOKEN}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_USERNAME: ${DB_USERNAME}
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    networks:
+      - bot_network
+  
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./Migrations:/docker-entrypoint-initdb.d
+    networks:
+      - bot_network
+
+networks:
+  bot_network:
+
+volumes:
+  mysql_data:

@@ -15,4 +15,15 @@ public class DataBaseInfo
      public bool Pooling { get; set; }
      public int MinPoolSize { get; set; }
      public int MaxPoolSize { get; set; }
+
+     public DataBaseInfo(string server, string db, string uid, string password, bool pool, int minPoolSize, int maxPoolSize)
+     {
+         Server = server;
+         Database = db;
+         Uid = uid;
+         Password = password;
+         Pooling = pool;
+         MinPoolSize = minPoolSize;
+         MaxPoolSize = maxPoolSize;
+     }
 }
