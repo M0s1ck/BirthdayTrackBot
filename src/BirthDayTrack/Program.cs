@@ -17,11 +17,6 @@ internal static class Program
 
         DotNetEnv.Env.Load();
         
-        foreach (DictionaryEntry entry in Environment.GetEnvironmentVariables())
-        {
-            Console.WriteLine($"{entry.Key}: {entry.Value}");
-        }
-        
         string botToken = Environment.GetEnvironmentVariable("BOT_TOKEN");
 
         Formatter.Secret = botToken[^7..];
@@ -33,13 +28,8 @@ internal static class Program
         
         DataBaseInfo dbInfo = new(host, database, dbUser, dbPass, pool: true, minPoolSize: 1, maxPoolSize: 10);
         
-        //Парсинг данных с токеном и данных для подключения к бд. 
-        //AppSettings appSettings = Parser.GetAppSettings() ?? new AppSettings();
-        
         string connectionString = Formatter.GetConnectionString(dbInfo);
         DataBaseQueries.ConnectionString = connectionString;
-        
-        //string botToken = appSettings.BotToken ?? "";
         
         // Это клиент для работы с Telegram Bot API, который позволяет отправлять сообщения, управлять ботом, подписываться на обновления и многое другое.
         ITelegramBotClient botClient = new TelegramBotClient(botToken); // Присваиваем нашей переменной значение, в параметре передаем Token, полученный от BotFather

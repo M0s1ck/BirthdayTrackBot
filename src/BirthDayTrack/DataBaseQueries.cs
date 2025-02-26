@@ -174,6 +174,8 @@ public static class DataBaseQueries
         command.Parameters.AddWithValue("@room", roomName);
 
         await command.ExecuteNonQueryAsync();
+        
+        Console.WriteLine($"{username} полностью добавлен в систему");
     }
 
     internal static async Task<string?> GetRoomByInvCode(int invCode)
