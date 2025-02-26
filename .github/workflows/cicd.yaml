@@ -25,6 +25,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
       - name: Push compose to Docker Hub 
-        uses: docker/compose-action@v3
-        with:
-          command: -f docker-compose.yaml push
+        run: docker-compose -f docker-compose.yaml push
