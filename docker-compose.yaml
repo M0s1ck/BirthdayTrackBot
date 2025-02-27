@@ -3,7 +3,7 @@ version: '3.8'
 services:
   birthday-bot:
     build: .
-    image: birthday-bot:1.2
+    image: ${DOCKER_HUB_USER}/birthday-bot:1.2
     environment:
       DB_SERVER: db
       DB_NAME: ${DB_NAME}
