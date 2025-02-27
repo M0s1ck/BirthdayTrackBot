@@ -2,8 +2,8 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 COPY *.sln .  
-COPY src/BirthDayTrack/*.csproj src/BirthDayTrack/  
-COPY src/AccessConfiguration/*.csproj src/AccessConfiguration/  
+COPY src/BirthDayTrack/*.csproj BirthDayTrack/  
+COPY src/AccessConfiguration/*.csproj AccessConfiguration/  
 
 RUN dotnet restore  
 
